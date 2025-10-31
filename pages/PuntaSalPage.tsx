@@ -275,7 +275,7 @@ const PuntaSalPage: React.FC<PuntaSalPageProps> = ({ onOpenQuote }) => {
                         </section>
                     </div>
 
-                    <aside>
+                    <aside id="date-selection-section">
                         <div className="sticky top-28 space-y-6 bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-lg">
                             <h3 className="text-xl font-bold">Elige tu fecha de Salida</h3>
                             
