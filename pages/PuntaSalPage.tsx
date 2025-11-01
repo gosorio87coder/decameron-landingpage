@@ -193,6 +193,12 @@ const PuntaSalPage: React.FC<PuntaSalPageProps> = ({ onOpenQuote }) => {
         }
     };
 
+    const handleScrollTo = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
 
     const counterButtonClasses = "w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-lg font-bold text-[#0D2B5B] disabled:opacity-50";
 
@@ -233,9 +239,23 @@ const PuntaSalPage: React.FC<PuntaSalPageProps> = ({ onOpenQuote }) => {
         <div className="animate-fade-in">
             <section className="relative h-[50vh] bg-cover bg-center" style={{ backgroundImage: "url('https://res.cloudinary.com/dnszd7czq/image/upload/v1758723079/paquete-todo-incluido-decameron-punta-sal-voyana_i6y8l5.webp')" }}>
                 <div className="absolute inset-0 bg-black/40"></div>
-                <div className="relative container mx-auto px-6 h-full flex flex-col justify-center text-white">
+                <div className="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center text-white">
                     <h1 className="font-montserrat text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase">Decameron Punta Sal</h1>
                     <p className="text-xl md:text-2xl mt-2 font-light">La experiencia todo incluido que mereces.</p>
+                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button 
+                            onClick={() => handleScrollTo('inclusions-section')}
+                            className="bg-[#facc15] text-[#0D2B5B] font-bold py-3 px-8 rounded-lg hover:bg-[#eab308] transition-colors duration-300 shadow-lg w-full sm:w-auto"
+                        >
+                            Qué incluye
+                        </button>
+                        <button 
+                            onClick={() => handleScrollTo('date-selection-section')}
+                            className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-[#0D2B5B] transition-colors duration-300 w-full sm:w-auto uppercase"
+                        >
+                            Cotiza
+                        </button>
+                    </div>
                 </div>
             </section>
             
@@ -253,7 +273,7 @@ const PuntaSalPage: React.FC<PuntaSalPageProps> = ({ onOpenQuote }) => {
             <div className="container mx-auto px-6 py-12">
                 <div className="grid lg:grid-cols-3 gap-12">
                     <div className="lg:col-span-2">
-                        <section className="mb-12">
+                        <section id="inclusions-section" className="mb-12">
                             <h2 className="text-3xl font-bold mb-6 border-l-4 border-[#1856C5] pl-4">¿Qué incluye tu paquete?</h2>
                             <div className="grid sm:grid-cols-2 gap-6">
                                 {inclusions.map((item, index) => (
@@ -321,15 +341,20 @@ const PuntaSalPage: React.FC<PuntaSalPageProps> = ({ onOpenQuote }) => {
                                 </div>
                             )}
 
-                             <div className="flex items-center gap-2 pt-4 border-t">
-                                <input 
-                                    type="checkbox" 
-                                    id="custom-date-mode"
-                                    checked={isCustomDateMode}
-                                    onChange={(e) => handleCustomDateToggle(e.target.checked)}
-                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                />
-                                <label htmlFor="custom-date-mode" className="text-sm font-medium text-gray-700">Quiero otra fecha</label>
+                            <div className="pt-4 border-t">
+                                <label 
+                                    htmlFor="custom-date-mode" 
+                                    className="flex justify-center items-center gap-3 bg-amber-100 text-gray-800 rounded-full px-5 py-2 w-fit mx-auto cursor-pointer hover:bg-amber-200 transition-colors duration-200"
+                                >
+                                    <input 
+                                        type="checkbox" 
+                                        id="custom-date-mode"
+                                        checked={isCustomDateMode}
+                                        onChange={(e) => handleCustomDateToggle(e.target.checked)}
+                                        className="h-4 w-4 rounded border-gray-400 text-indigo-600 focus:ring-indigo-500"
+                                    />
+                                    <span className="text-sm font-medium select-none">Quiero otra fecha</span>
+                                </label>
                             </div>
 
 
