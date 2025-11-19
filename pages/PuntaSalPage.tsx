@@ -215,7 +215,7 @@ const PuntaSalPage: React.FC<PuntaSalPageProps> = ({
 
       if (!groups[key]) {
         const labelBase = item.date.toLocaleString("es-ES", {
-          month: "long",
+          month: "short",
           year: "numeric",
         });
         const label =
