@@ -1,6 +1,6 @@
 import { TravelPackage } from '../types';
 
-export const WHATSAPP_NUMBER = '51993699490';
+export const WHATSAPP_NUMBER = '51969354352';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const NATIONAL_PACKAGES: TravelPackage[] = [
